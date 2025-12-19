@@ -1,2 +1,2 @@
-# web3-next-demo
+# wall-web3-next-demo
 Hello, World!
