@@ -1,6 +1,7 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox-mocha-ethers";
 import "@nomicfoundation/hardhat-ethers";
+import type { } from "@nomicfoundation/hardhat-ethers/types";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.28",
