@@ -1,18 +1,17 @@
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox-mocha-ethers";
-import "@nomicfoundation/hardhat-ethers";
-import type { } from "@nomicfoundation/hardhat-ethers/types";
+import { defineConfig, configVariable } from "hardhat/config";
+import HardhatToolbox from "@nomicfoundation/hardhat-toolbox-mocha-ethers";
+import HardhatKeystore from "@nomicfoundation/hardhat-keystore";
 
-const config: HardhatUserConfig = {
+export default defineConfig({
   solidity: "0.8.28",
+  plugins: [HardhatToolbox, HardhatKeystore],
   networks: {
     amoy: {
       type: "http",
       url: "https://rpc-amoy.polygon.technology",
       chainId: 80002,
-      accounts: ["0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"],
+      // Esto le dice a Hardhat: "Buscá la clave en la caja fuerte"
+      accounts: [configVariable("PRIVATE_KEY")],
     },
   },
-};
-
-export default config;
+});
